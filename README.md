@@ -59,7 +59,7 @@ Estos son los metodos disponibles usando el Django rest framework:
 
 Este endpoint carga datos de planetas desde el endpoint proporcionado para la prueba: https://swapi-graphql.netlify.app/.netlify/functions/index?query=query%20Query%20%7BallPlanets%7Bplanets%7Bname%20population%20terrains%20climates%7D%7D%7D, **pero solo puede ejecutarse una vez**.
 
->GET    `/planets/load-data/`            Carga los planetas iniciales (una vez)
+>GET    `/load-data/load/`            Carga los planetas iniciales (una vez)
 
 Una vez que se ha hecho la carga inicial el endpoint retornará el codigo de estado 403, si hay 
 al menos un registro en la base de datos, esto está hecho con el proposito de no sobreescribir la base de datos.

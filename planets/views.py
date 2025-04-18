@@ -16,7 +16,7 @@ class PlanetViewSet(viewsets.ModelViewSet):
     serializer_class = PlanetSerializer
 
 @api_view(["GET"])
-def load_planet_data() -> Response:
+def load_planet_data(request) -> Response:  # noqa: ANN001, ARG001
     """Get and save the initial batch of data to populate the table.
 
     Gets the planet data form the GraphQL API endpoint using a get request
