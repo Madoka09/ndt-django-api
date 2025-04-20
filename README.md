@@ -4,43 +4,43 @@ Este proyecto es una pequeña API RESTful construida con Django y Django REST Fr
 
 ## Requisitos
 
-- Python 3.12+ (El venv inicial fue creado con python 3.12 como base)
-- pip
+- Docker
+- Docker Compose
+
+## Soporte para Docker y Docker Compose
+
+Se agregó soporte básico para Docker y Dokcer Compose con el fin de intentar emular un entorno parecido al de producción.
+
+> Nota: No tengo experiencia profesional usando Docker, sin embargo he ejecutado y creado contenedores para proyectos personales previamente.
 
 ## Instalación
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu_usuario/planet-api.git
-   cd planet-api
+   git clone https://github.com/Madoka09/ntd-django-api.git
+   cd ntd-django-api
    ```
 
-2. Crea y activa un entorno virtual:
+2. Ejecutar docker compose:
    ```bash
-   python -m venv env
-   source env/bin/activate  # en Windows: env\Scripts\activate
+   docker compose up --build
    ```
 
-3. Instala las dependencias:
+3. En otra terminal ejecutar las migraciones:
    ```bash
-   pip install -r requirements.txt
+   docker compose exec web python manage.py migrate
    ```
 
-4. Aplica las migraciones:
+4. Para detener el contenedor se puede usar:
    ```bash
-   python manage.py migrate
+   docker compose down
    ```
 
-## Ejecución del servidor
+## Cambios respecto a la versión anterior:
 
-Inicia el servidor de desarrollo de Django con:
-
-```bash
-python manage.py runserver
-```
-
-La url del servidor suele ser la siguiente:
-`http://127.0.0.1:8000/`
+1. Se usa PostrgreSQL en lugar de sqlite como el motor de base de datos.
+2. Ahora se usa Poetry como gestor de dependencias y entorno.
+3. Ya no es necesario instalar dependencias o crear un entorno virtual
 
 ## Endpoints
 

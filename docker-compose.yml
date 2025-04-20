@@ -1,0 +1,30 @@
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DEBUG: "1"
+      DB_NAME: "planetarium-ndt"
+      DB_USER: "ndt-user"
+      DB_PASSWORD: "disposable-password"
+      DB_HOST: "db"
+      DB_PORT: "5432"
+      USE_SQLITE: "0"
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: planetarium-ndt
+      POSTGRES_USER: ndt-user
+      POSTGRES_PASSWORD: disposable-password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
