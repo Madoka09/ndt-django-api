@@ -31,7 +31,12 @@ Se agregó soporte básico para Docker y Dokcer Compose con el fin de intentar e
    docker compose exec web python manage.py migrate
    ```
 
-4. Para detener el contenedor se puede usar:
+4. Para probar la API, se puede ingresar a la URL:
+   ```bash
+   http://localhost:8000
+   ```
+
+5. Para detener el contenedor y limpiar se puede usar el comando:
    ```bash
    docker compose down
    ```
@@ -41,6 +46,7 @@ Se agregó soporte básico para Docker y Dokcer Compose con el fin de intentar e
 1. Se usa PostrgreSQL en lugar de sqlite como el motor de base de datos.
 2. Ahora se usa Poetry como gestor de dependencias y entorno.
 3. Ya no es necesario instalar dependencias o crear un entorno virtual
+4. Se complementó el serializador del modelo Planet con validaciones sencillas.
 
 ## Endpoints
 
