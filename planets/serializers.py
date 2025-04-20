@@ -3,12 +3,12 @@ from rest_framework import serializers  # noqa: D100
 from planets.models import Planet
 
 
-class PlanetSerializer(serializers.HyperlinkedModelSerializer):
+class PlanetSerializer(serializers.ModelSerializer):
     """Serializer for the Planet model."""
 
     class Meta:  # noqa: D106
         model = Planet
-        fields = ["name", "population", "terrains", "climates"]  # noqa: RUF012
+        fields = ["id", "name", "population", "terrains", "climates"]  # noqa: RUF012
 
     def validate_name(self, value: str) -> str:  # noqa: D102
         if not value.strip():
@@ -23,13 +23,13 @@ class PlanetSerializer(serializers.HyperlinkedModelSerializer):
         return value
 
     def validate_terrains(self, value: str) -> str:  # noqa: D102
-        if value and not value.strip():
+        if not value and not value.strip():
             err = "Terrains value cannot be empty or be just spaces."
             raise serializers.ValidationError(err)
         return value
 
     def validate_climates(self, value: str) -> str:  # noqa: D102
-        if value and not value.strip():
+        if not value and not value.strip():
             err = "Climates value cannot be empty or be just spaces."
             raise serializers.ValidationError(err)
         return value
